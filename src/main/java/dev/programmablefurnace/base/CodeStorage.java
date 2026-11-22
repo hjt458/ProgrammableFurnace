@@ -9,9 +9,9 @@ import net.minecraft.world.item.component.CustomData;
 import java.util.List;
 
 /**
- * 代码存储工具。占位实现：代码直接绑定在物品的 NBT（CustomData）上——
+ * 代码存储工具：代码直接绑定在物品的 NBT（CustomData）上——
  * 这是最天然的 RAII：物品消失，代码随之消失，无泄漏、可随存档持久化。
- * 后续若改为"全局代码注册表 + UUID 引用"，只需替换本类的读写实现。
+ * 若将来改为"全局代码注册表 + UUID 引用"，只需替换本类的读写实现。
  */
 public final class CodeStorage {
 

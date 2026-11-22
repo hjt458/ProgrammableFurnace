@@ -33,8 +33,6 @@ public final class ModItems {
             p -> new CodeFileItem(p, ContentState.EXECUTABLE));
     public static final DeferredItem<CodeFileItem> CODE_FILE_FAILED = ITEMS.registerItem("code_file_failed",
             p -> new CodeFileItem(p, ContentState.FAILED));
-    /** 旧单物品：仍注册为空白（兼容引用），图标用空白文件。 */
-    public static final DeferredItem<CodeFileItem> CODE_FILE = CODE_FILE_BLANK;
 
     // ===== U 盘扩展卡（决定工作界面多输入/输出布局，三档 212/313/414）=====
     public static final DeferredItem<UsbCardItem> USB_CARD_I = ITEMS.registerItem("usb_card_i",

@@ -3,10 +3,9 @@ package dev.programmablefurnace.base;
 /**
  * 可编译代码的分析器接口。负责把源代码判定为 {@link ContentState}（空白/可执行/编译失败）。
  *
- * <p><b>占位说明</b>：当前只提供最朴素的占位实现 {@link PlaceholderCodeAnalyzer}
- * （空→BLANK，首行非空→EXECUTABLE，首行空白→FAILED）。
- * 后续计划引入词法分析（scan）与语法分析（parse）来真正判定代码是否可通过编译，
- * 届时只需提供新的 {@link CodeAnalyzer} 实现并替换注册即可，无需改动调用方。</p>
+ * <p>唯一的产品实现是 {@link CompilerAnalyzer}：走词法 + 语法 + 符号绑定真正判定源码能否编译，
+ * 早期那个只看首行空白的 {@code PlaceholderCodeAnalyzer} 已删除。保留接口是为了让
+ * {@code CodeStorage#setAnalyzer} 能在单测里注入假实现，而不必碰真实编译器。</p>
  */
 public interface CodeAnalyzer {
 
