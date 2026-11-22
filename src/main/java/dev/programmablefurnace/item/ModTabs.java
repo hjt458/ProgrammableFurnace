@@ -22,7 +22,7 @@ public final class ModTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ModInfo.MODID);
 
     /** 自定义创造标签页：图标用可编程熔炉方块，只放本模组的物品与机器。 */
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("main",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.programmablefurnace"))
                     .withTabsBefore(CreativeModeTabs.COMBAT)
