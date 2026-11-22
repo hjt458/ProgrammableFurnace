@@ -68,6 +68,16 @@ public final class CompilerGameTests {
         helper.assertTrue("set 5".equals(CodeStorage.getCode(s)),
                 "CodeStorage 存取失败，实际: " + CodeStorage.getCode(s));
         helper.assertTrue(CodeStorage.hasCode(s), "CodeStorage.hasCode 应返回 true");
+
+        // 空白 = 无组件（规范形）：编译空输入产出的空白必须与合成的裸空白逐组件相同，否则原版不会合并
+        net.minecraft.world.item.ItemStack blank =
+                new net.minecraft.world.item.ItemStack(ModItems.CODE_FILE_BLANK.get());
+        CodeStorage.setCode(blank, "");
+        CodeStorage.setContentState(blank, dev.programmablefurnace.base.ContentState.BLANK);
+        net.minecraft.world.item.ItemStack crafted =
+                new net.minecraft.world.item.ItemStack(ModItems.CODE_FILE_BLANK.get());
+        helper.assertTrue(net.minecraft.world.item.ItemStack.isSameItemSameComponents(blank, crafted),
+                "空白文件不应携带任何组件（组件不等会导致无法堆叠），实际: " + blank.getComponents());
         helper.succeed();
     }
 
@@ -112,6 +122,21 @@ public final class CompilerGameTests {
                         + dev.programmablefurnace.base.CodeStorage.getFileType(out));
         helper.assertTrue(be.getItem(CompilerBlockEntity.SLOT_INPUT).isEmpty(),
                 "编译后输入文件应被消耗");
+
+        // 空输入编译：产物必须是"裸空白"，与工作台合成的空白文件能堆叠（用户报告的 bug）
+        be.setItem(CompilerBlockEntity.SLOT_OUTPUT, net.minecraft.world.item.ItemStack.EMPTY);
+        net.minecraft.world.item.ItemStack blankIn =
+                new net.minecraft.world.item.ItemStack(ModItems.CODE_FILE_BLANK.get());
+        be.setItem(CompilerBlockEntity.SLOT_INPUT, blankIn);
+        java.util.List<String> blankErrors = be.tryCompile("");
+        helper.assertTrue(blankErrors.isEmpty(), "空输入不该报错，实际: " + blankErrors);
+        net.minecraft.world.item.ItemStack blankOut = be.getItem(CompilerBlockEntity.SLOT_OUTPUT);
+        helper.assertTrue(!blankOut.isEmpty(), "空输入也要产出空白文件");
+        net.minecraft.world.item.ItemStack craftedBlank =
+                new net.minecraft.world.item.ItemStack(ModItems.CODE_FILE_BLANK.get());
+        helper.assertTrue(
+                net.minecraft.world.item.ItemStack.isSameItemSameComponents(blankOut, craftedBlank),
+                "空白产物应与合成空白逐组件相同，实际组件: " + blankOut.getComponents());
         ModLog.LOG.info("[gametest] 编译器链路跑通：产物={} 状态={} 类型={}",
                 out.getItem().getDescriptionId(),
                 dev.programmablefurnace.base.CodeStorage.getContentState(out),

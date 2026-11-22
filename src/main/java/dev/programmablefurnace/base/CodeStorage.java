@@ -40,8 +40,14 @@ public final class CodeStorage {
     /** 把代码写入物品 NBT（保留同 Tag 上的其他字段）。图标由独立物品各自的模型决定，不在此动态切换。 */
     public static void setCode(ItemStack stack, String code) {
         if (stack == null || stack.isEmpty()) return;
-        CustomData.update(DataComponents.CUSTOM_DATA, stack,
-                tag -> tag.putString(CODE_TAG, code == null ? "" : code));
+        if (code == null || code.isEmpty()) {
+            // 空代码 = 没有 code 键。若保留 "code":""，编译出来的空文件会比工作台合成的空文件多一个组件，
+            // 原版按 isSameItemSameComponents 判可否堆叠，多出的组件会让两者永远合不成一摞。
+            CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.remove(CODE_TAG));
+            stripEmptyCustomData(stack);
+            return;
+        }
+        CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putString(CODE_TAG, code));
     }
 
     public static void clearCode(ItemStack stack) {
@@ -115,14 +121,31 @@ public final class CodeStorage {
         return vals[ord];
     }
 
-    /** 写入内容状态，并同步设置对应物品模型（ITEM_MODEL 动态切换图标）。这是内容状态的**唯一写入口**。 */
+    /**
+     * 写入内容状态，并同步设置对应物品模型（ITEM_MODEL 动态切换图标）。这是内容状态的**唯一写入口**。
+     * <p>{@link ContentState#BLANK} 取"规范形"：清掉本类写过的全部标签并摘掉 {@code ITEM_MODEL}，
+     * 让空白文件与工作台合成出来的裸物品<b>逐组件相同</b>——原版用 {@code isSameItemSameComponents}
+     * 判可否堆叠，多一个 {@code content_state:0} 就再也合不成一摞。</p>
+     */
     public static void setContentState(ItemStack stack, ContentState state) {
         if (stack == null || stack.isEmpty()) return;
-        ContentState effective = state == null ? ContentState.BLANK : state;
-        int finalOrd = effective.ordinal();
-        CustomData.update(DataComponents.CUSTOM_DATA, stack,
-                tag -> tag.putInt(CONTENT_STATE_TAG, finalOrd));
-        stack.set(DataComponents.ITEM_MODEL, modelFor(effective));
+        if (state == null || state == ContentState.BLANK) {
+            CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> {
+                tag.remove(CODE_TAG);
+                tag.remove(SOURCE_NAME_TAG);
+                tag.remove(FILE_TYPE_TAG);
+                tag.remove(CONTENT_STATE_TAG);
+                tag.remove(COMPILE_ERRORS_TAG);
+            });
+            // 只 remove 还不够：PatchedDataComponentMap 会留下「删过这个类型」的补丁记录，
+            // 合并后的视图看着一样，但 equals() 与全新物品不相等，仍然不能堆叠。
+            // 直接把组件表整体恢复成物品原型，才是真正的"裸物品"。
+            stack.applyComponents(stack.getItem().components());
+            return;
+        }
+        int ord = state.ordinal();
+        CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putInt(CONTENT_STATE_TAG, ord));
+        stack.set(DataComponents.ITEM_MODEL, modelFor(state));
     }
 
     /**
@@ -184,6 +207,15 @@ public final class CodeStorage {
             case DEPENDENCY -> Identifier.fromNamespaceAndPath("programmablefurnace", "code_file_dependency");
             default -> Identifier.fromNamespaceAndPath("programmablefurnace", "code_file_blank");
         };
+    }
+
+    /**
+     * 自有标签删空后把 {@code CUSTOM_DATA} 组件整个摘掉：留下的空 {@code {}} 组件本身也是一个组件，
+     * 同样会让两个物品 {@code isSameItemSameComponents} 为 false。
+     */
+    private static void stripEmptyCustomData(ItemStack stack) {
+        CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+        if (data != null && data.copyTag().size() == 0) stack.remove(DataComponents.CUSTOM_DATA);
     }
 
     private static CompoundTag copyTag(ItemStack stack) {
