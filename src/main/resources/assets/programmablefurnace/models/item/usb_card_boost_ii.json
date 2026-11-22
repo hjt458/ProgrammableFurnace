@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "programmablefurnace:item/usb_card_ii"
+  }
+}

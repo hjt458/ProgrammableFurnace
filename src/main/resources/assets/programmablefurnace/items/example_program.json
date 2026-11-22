@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "programmablefurnace:item/code_file_exec"
+  }
+}

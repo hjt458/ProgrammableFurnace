@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "programmablefurnace:usb_card",
+  "pattern": ["cic", "ixi", "cic"],
+  "key": {
+    "c": "minecraft:copper_ingot",
+    "i": "minecraft:iron_ingot",
+    "x": "minecraft:blast_furnace"
+  },
+  "result": {
+    "id": "programmablefurnace:usb_card_i"
+  }
+}

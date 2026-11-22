@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "programmablefurnace:block/compiler" },
+    "facing=south": { "model": "programmablefurnace:block/compiler", "y": 180 },
+    "facing=west": { "model": "programmablefurnace:block/compiler", "y": 270 },
+    "facing=east": { "model": "programmablefurnace:block/compiler", "y": 90 }
+  }
+}

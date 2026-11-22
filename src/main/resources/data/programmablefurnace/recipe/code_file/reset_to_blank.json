@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "programmablefurnace:code_file",
+  "ingredients": [
+    "#programmablefurnace:code_file"
+  ],
+  "result": {
+    "id": "programmablefurnace:code_file_blank"
+  }
+}

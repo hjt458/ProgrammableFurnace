@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:function",
+  "function": "programmablefurnace:furnace_chest_fuel",
+  "environment": "minecraft:default",
+  "structure": "programmablefurnace:compiler_test",
+  "max_ticks": 400,
+  "setup_ticks": 50,
+  "required": true,
+  "rotation": "none"
+}

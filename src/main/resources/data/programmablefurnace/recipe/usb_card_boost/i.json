@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "programmablefurnace:usb_card_boost",
+  "pattern": ["cic", "ixi", "cic"],
+  "key": {
+    "c": "minecraft:copper_ingot",
+    "i": "minecraft:iron_ingot",
+    "x": "minecraft:coal"
+  },
+  "result": {
+    "id": "programmablefurnace:usb_card_boost_i"
+  }
+}

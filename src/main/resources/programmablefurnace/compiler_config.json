@@ -1,0 +1,5 @@
+{
+  "capacity": 27,
+  "output_allowed": ["runtime", "dependency"],
+  "default_file_name": "code.txt"
+}

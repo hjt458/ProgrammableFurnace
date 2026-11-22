@@ -1,0 +1,44 @@
+{
+  "layout": {
+    "compile": { "startBtnX": 60, "startBtnY": 53, "startBtnW": 56, "startBtnH": 20 },
+    "furnace": { "startX": 182, "startY": 15, "stopX": 182, "stopY": 39, "btnW": 40, "btnH": 20 },
+    "dependency": {
+      "inX": 21, "outX": 141, "slotY": 31, "slotSize": 18,
+      "listX": 46, "listY": 17, "listW": 84, "listH": 54, "rowH": 18
+    },
+    "tab": { "x": -32, "y": 20, "w": 32, "h": 16 },
+    "panel": { "w": 300, "h": 220 },
+    "editor": { "x": 12, "y": 30, "w": 276, "h": 178 },
+    "compileBtn": { "w": 24, "h": 64 },
+    "slots": {
+      "compileInX": 49, "compileInY": 30,
+      "compileOutX": 109, "compileOutY": 30,
+      "depInX": 21, "depInY": 31,
+      "depOutX": 141, "depOutY": 31,
+      "hiddenX": 200, "hiddenY": 200
+    },
+    "extra": { "x": [153, 153, 153, 153], "y": [7, 25, 43, 61] }
+  },
+  "modes": {
+    "111": { "inputCount": 1, "outputCount": 1,
+             "panelW": 176,
+             "inputX": [56], "fuelX": [56], "outputX": [116],
+             "inputY": [17], "fuelY": [53], "outputY": [35],
+             "flameX": 56, "flameY": 36, "arrowX": [79], "arrowY": [34] },
+    "212": { "inputCount": 2, "outputCount": 2,
+             "panelW": 176,
+             "inputX": [53, 53], "fuelX": [8], "outputX": [111, 111],
+             "inputY": [26, 44], "fuelY": [48], "outputY": [26, 44],
+             "flameX": 8, "flameY": 32, "arrowX": [79, 79], "arrowY": [27, 44] },
+    "313": { "inputCount": 3, "outputCount": 3,
+             "panelW": 176,
+             "inputX": [53, 53, 53], "fuelX": [8], "outputX": [111, 111, 111],
+             "inputY": [16, 34, 52], "fuelY": [48], "outputY": [16, 34, 52],
+             "flameX": 8, "flameY": 32, "arrowX": [79, 79, 79], "arrowY": [17, 35, 52] },
+    "414": { "inputCount": 4, "outputCount": 4,
+             "panelW": 176,
+             "inputX": [53, 53, 53, 53], "fuelX": [8], "outputX": [111, 111, 111, 111],
+             "inputY": [8, 26, 44, 62], "fuelY": [48], "outputY": [8, 26, 44, 62],
+             "flameX": 8, "flameY": 32, "arrowX": [79, 79, 79, 79], "arrowY": [9, 27, 44, 63] }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "capacity": 27,
+  "output_allowed": ["runtime", "dependency"],
+  "input_count": 4,
+  "fuel_count": 1,
+  "output_count": 4
+}

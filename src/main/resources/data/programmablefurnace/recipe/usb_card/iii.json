@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "programmablefurnace:usb_card",
+  "pattern": ["ddd", "did", "ddd"],
+  "key": {
+    "d": "minecraft:diamond",
+    "i": "programmablefurnace:usb_card_ii"
+  },
+  "result": {
+    "id": "programmablefurnace:usb_card_iii"
+  }
+}

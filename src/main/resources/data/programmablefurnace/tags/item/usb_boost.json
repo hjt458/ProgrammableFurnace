@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "programmablefurnace:usb_card_boost_i",
+    "programmablefurnace:usb_card_boost_ii",
+    "programmablefurnace:usb_card_boost_iii"
+  ]
+}

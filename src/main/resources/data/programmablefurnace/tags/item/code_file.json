@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "programmablefurnace:code_file_exec",
+    "programmablefurnace:code_file_failed",
+    "programmablefurnace:example_program"
+  ]
+}

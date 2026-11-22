@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "programmablefurnace:code_file_blank",
+  "pattern": [
+    " c ",
+    "gpi",
+    " r "
+  ],
+  "key": {
+    "p": "minecraft:paper",
+    "i": "minecraft:iron_ingot",
+    "r": "minecraft:redstone",
+    "g": "minecraft:gold_ingot",
+    "c": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "programmablefurnace:code_file_blank",
+    "count": 4
+  }
+}

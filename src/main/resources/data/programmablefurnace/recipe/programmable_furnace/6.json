@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "programmablefurnace:programmable_furnace",
+  "pattern": [
+    "rir",
+    "ifg",
+    "rgr"
+  ],
+  "key": {
+    "r": "minecraft:redstone",
+    "f": "minecraft:furnace",
+    "g": "minecraft:copper_ingot",
+    "i": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "programmablefurnace:programmable_furnace"
+  }
+}

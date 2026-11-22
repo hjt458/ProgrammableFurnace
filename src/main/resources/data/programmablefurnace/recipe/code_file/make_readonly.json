@@ -1,0 +1,12 @@
+{
+  "type": "programmablefurnace:make_readonly",
+  "category": "misc",
+  "group": "programmablefurnace:code_file",
+  "ingredients": [
+    "programmablefurnace:code_file_exec",
+    "minecraft:gold_nugget"
+  ],
+  "result": {
+    "id": "programmablefurnace:code_file_exec"
+  }
+}

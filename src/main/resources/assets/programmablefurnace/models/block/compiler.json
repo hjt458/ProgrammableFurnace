@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "programmablefurnace:block/compiler_top",
+    "down": "programmablefurnace:block/compiler_side",
+    "north": "programmablefurnace:block/compiler_front",
+    "south": "programmablefurnace:block/compiler_side",
+    "east": "programmablefurnace:block/compiler_side",
+    "west": "programmablefurnace:block/compiler_side",
+    "particle": "programmablefurnace:block/compiler_top"
+  }
+}

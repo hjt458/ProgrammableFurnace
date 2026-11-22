@@ -1,0 +1,25 @@
+{
+  "burnTime": 800,
+  "maxProgress": 200,
+  "progressPerTick": 1,
+  "burnEfficiency": 1.0,
+  "fuels": {
+    "minecraft:coal": {
+      "burnTime": 800,
+      "efficiency": 1.0,
+      "maxProgress": 200,
+      "progressPerTick": 1
+    },
+    "minecraft:charcoal": {
+      "burnTime": 1200,
+      "efficiency": 1.2,
+      "maxProgress": 150,
+      "progressPerTick": 2
+    }
+  },
+  "boosts": {
+    "1": { "burnTime": 1600,  "efficiency": 1.0, "maxProgress": 160, "progressPerTick": 1 },
+    "2": { "burnTime": 1600, "efficiency": 1.0, "maxProgress": 120, "progressPerTick": 2 },
+    "3": { "burnTime": 3200, "efficiency": 2.0, "maxProgress": 80,  "progressPerTick": 4 }
+  }
+}
